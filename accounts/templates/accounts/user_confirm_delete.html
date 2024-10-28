@@ -1,0 +1,21 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}{{ user.username }}{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card border-danger">
+        <div class="card-header bg-danger text-white">
+            <h1 class="card-title">Confirm Delete</h1>
+        </div>
+        <div class="card-body">
+            <p>Are you sure you want to delete <strong>{{ user.username }}</strong>?</p>
+            <form method="post" class="d-inline" action="{% url 'user_delete' user.pk %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Yes, delete</button>
+            </form>
+            <a href="{% url 'user_detail' request.user.pk %}" class="btn btn-secondary ml-2">Cancel</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

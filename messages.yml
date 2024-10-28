@@ -1,0 +1,5 @@
+en:
+  accounts:
+    forbidden: "You are not allowed to access this account."
+    not_found: "Account not found."
+    deleted: "Account deleted successfully."

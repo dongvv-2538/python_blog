@@ -1,0 +1,13 @@
+# Ignore Python bytecode files
+*.pyc
+
+# Ignore other files and directories
+__pycache__/
+*.pyo
+*.pyd
+*.swp
+*.swo
+.DS_Store
+.env
+*.log
+*.sqlite3

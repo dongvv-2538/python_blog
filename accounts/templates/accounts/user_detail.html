@@ -1,0 +1,27 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}{{ user.username }}{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header">
+            <h1 class="card-title">{{ user.username }} - User Detail</h1>
+        </div>
+        <div class="card-body">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><strong>Username:</strong> {{ user.username }}</li>
+                <li class="list-group-item"><strong>First Name:</strong> {{ user.first_name }}</li>
+                <li class="list-group-item"><strong>Last Name:</strong> {{ user.last_name }}</li>
+                <li class="list-group-item"><strong>Email:</strong> {{ user.email }}</li>
+                <li class="list-group-item"><strong>Is Active:</strong> {{ user.is_active }}</li>
+                <li class="list-group-item"><strong>Is Staff:</strong> {{ user.is_staff }}</li>
+            </ul>
+        </div>
+        <div class="card-footer d-flex justify-content-between">
+            <a href="{% url 'user_update' user.pk %}" class="btn btn-primary">Edit</a>
+            <a href="{% url 'delete_confirm' user.pk %}" class="btn btn-danger">Delete</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

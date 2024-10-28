@@ -1,0 +1,56 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  color: #333;
+}
+
+a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button, input[type="submit"] {
+  background-color: #0066cc;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+button:hover, input[type="submit"]:hover {
+  background-color: #005bb5;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+/* Add some custom padding around the form containers */
+.row.justify-content-center {
+  margin-top: 40px;
+}
+
+
+/* Optional styling for the logout link */
+#logout-form a {
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#logout-form a:hover {
+  text-decoration: underline;
+}

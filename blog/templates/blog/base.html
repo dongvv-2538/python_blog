@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Blog{% endblock %}</title>
+    {% load static %}
+    <!-- Include Bootstrap CSS via CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/styles.css' %}">
+</head>
+<body>
+    <!-- Header Bar -->
+    <header class="bg-dark py-3">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <a class="navbar-brand" href="{% url 'index' %}">My Blog</a>
+                <ul class="navbar-nav ml-auto">
+                    <!-- If the user is authenticated, show the logout button -->
+                    {% if request.user.is_authenticated %}
+                        <li class="nav-item">
+                            <span class="navbar-text">Welcome, {{ request.user.username }}</span>
+                        </li>
+                        <li class="nav-item">
+                            <form id="logout-form" method="POST" action="{% url 'logout' %}" style="display: inline;">
+                                {% csrf_token %}
+                                <a href="#" class="nav-link" onclick="document.getElementById('logout-form').submit(); return false;">
+                                    Logout
+                                </a>
+                            </form>
+                        </li>
+                    <!-- If the user is not authenticated, show the login button -->
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'login' %}">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'register' %}">Register</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page content -->
+    <div class="container mt-4">
+        {% block content %}
+        <!-- Child templates will insert content here -->
+        {% endblock %}
+    </div>
+
+    <!-- Include Bootstrap JS and dependencies (optional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
